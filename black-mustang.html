@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Mustang | Casino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0d;
+    --surface: #151517;
+    --line: #26262a;
+    --text: #e9e6df;
+    --muted: #8d8a84;
+    --gold: #c6a567;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  h1, h2, h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  a { color: inherit; text-decoration: none; }
+  section { padding: 110px 8%; max-width: 1200px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .divider {
+    width: 48px; height: 1px; background: var(--gold); margin: 1.5rem 0 2.5rem;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 8%;
+    background: rgba(12,12,13,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; letter-spacing: 0.15em; }
+  .logo span { color: var(--gold); }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav ul a { font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); transition: color .3s; }
+  nav ul a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    max-width: none;
+    padding: 0 8%;
+    background: radial-gradient(ellipse at center, #1c1a17 0%, var(--bg) 70%);
+  }
+  .hero h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: 1; }
+  .hero h1 span { color: var(--gold); font-style: italic; }
+  .hero p { margin-top: 1.5rem; color: var(--muted); font-size: 0.95rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .btn {
+    display: inline-block; margin-top: 2.5rem;
+    padding: 0.9rem 2.4rem;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase;
+    transition: all .3s;
+  }
+  .btn:hover { background: var(--gold); color: var(--bg); }
+
+  /* TEXT BLOCKS */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .two-col h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+  .two-col p { color: var(--muted); margin-bottom: 1.2rem; }
+
+  /* MISSION / VISION */
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .mv-card { border: 1px solid var(--line); padding: 3rem; background: var(--surface); }
+  .mv-card h3 { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+  .mv-card p { color: var(--muted); }
+
+  /* GAMES */
+  .games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .game {
+    border: 1px solid var(--line); background: var(--surface);
+    padding: 2.5rem 2rem; transition: border-color .3s, transform .3s;
+  }
+  .game:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .game .num { font-family: "Cormorant Garamond", serif; color: var(--gold); font-size: 1.1rem; }
+  .game h3 { font-size: 1.7rem; margin: .8rem 0 .6rem; }
+  .game p { color: var(--muted); font-size: 0.92rem; }
+
+  /* TEAM */
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: center; }
+  .member .avatar {
+    width: 140px; height: 140px; border-radius: 50%;
+    margin: 0 auto 1.2rem;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Cormorant Garamond", serif; font-size: 2.5rem; color: var(--gold);
+    background: var(--surface);
+  }
+  .member h3 { font-size: 1.35rem; }
+  .member p { color: var(--muted); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* SOCIAL + CONTACT */
+  .social { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+  .social a {
+    border: 1px solid var(--line); padding: 0.9rem 1.8rem;
+    font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: all .3s;
+  }
+  .social a:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-box { text-align: center; }
+  .contact-box .phone {
+    font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--gold); margin-top: 1rem; display: block;
+  }
+
+  /* IMAGE SLOTS: reemplaza el div por <img src="tu-foto.jpg" alt="..."> */
+  .img-slot {
+    width: 100%; aspect-ratio: 4 / 3;
+    border: 1px dashed var(--gold); background: var(--surface);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: var(--muted); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 1rem;
+  }
+  img.img-slot { object-fit: cover; border: 1px solid var(--line); display: block; }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0; opacity: .25;
+    display: flex; align-items: center; justify-content: center;
+    border: 0; background: var(--bg); aspect-ratio: auto;
+  }
+  .hero { position: relative; overflow: hidden; }
+  .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
+  .about-img { margin-top: 0; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .game .img-slot { margin-bottom: 1.5rem; aspect-ratio: 16 / 10; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2.5rem 8%;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  footer .age { display: inline-block; border: 1px solid var(--gold); color: var(--gold); padding: .2rem .6rem; margin-bottom: 1rem; font-size: .75rem; }
+
+  @media (max-width: 800px) {
+    nav ul { display: none; }
+    .two-col, .mv-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    section { padding: 80px 6%; }
+    .mv-card { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BLACK <span>MUSTANG</span></div>
+  <ul>
+    <li><a href="#quienes">Quiénes somos</a></li>
+    <li><a href="#mision">Misión</a></li>
+    <li><a href="#juegos">Juegos</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <!-- IMAGEN DE FONDO DEL HERO (opcional): cambia el div por <img class="hero-bg" src="..."> -->
+  <div class="img-slot hero-bg">Foto de fondo del hero (opcional)</div>
+  <span class="eyebrow">Bienvenido</span>
+  <h1>Black <span>Mustang</span></h1>
+  <p>Casino &middot; Elegancia &middot; Emoción</p>
+  <a href="#contacto" class="btn">Contáctanos</a>
+</header>
+
+<section id="quienes">
+  <div class="two-col">
+    <div>
+      <span class="eyebrow">Quiénes somos</span>
+      <h2>Una experiencia de juego con carácter</h2>
+      <div class="divider"></div>
+    </div>
+    <div>
+      <p>Black Mustang nace con la idea de ofrecer un espacio de entretenimiento sofisticado, donde cada detalle cuenta. Somos un equipo apasionado por el juego responsable y por brindar una experiencia cuidada, moderna y con la atención que cada cliente merece.</p>
+      <p>Describe aquí la historia del casino, cuándo empezó y qué lo hace diferente.</p>
+      <div class="img-slot about-img" style="margin-top:2rem;">Foto: fachada o interior del casino</div>
+    </div>
+  </div>
+</section>
+
+<section id="mision">
+  <span class="eyebrow">Identidad</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;">Misión y visión</h2>
+  <div class="divider"></div>
+  <div class="mv-grid">
+    <div class="mv-card">
+      <h3>Misión</h3>
+      <p>Brindar entretenimiento de alta calidad en un ambiente seguro, elegante y respetuoso, donde nuestros clientes disfruten cada juego con confianza.</p>
+    </div>
+    <div class="mv-card">
+      <h3>Visión</h3>
+      <p>Convertirnos en el casino de referencia por su excelencia, innovación y compromiso con el juego responsable.</p>
+    </div>
+  </div>
+</section>
+
+<section id="juegos">
+  <span class="eyebrow">Nuestros juegos</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;">Elige tu mesa</h2>
+  <div class="divider"></div>
+  <div class="games-grid">
+    <div class="game"><div class="img-slot">Foto: Ruleta</div><span class="num">01</span><h3>Ruleta</h3><p>Clásica y elegante. Apuesta con estilo y deja que la suerte decida.</p></div>
+    <div class="game"><div class="img-slot">Foto: Blackjack</div><span class="num">02</span><h3>Blackjack</h3><p>Estrategia y precisión para vencer a la banca en cada mano.</p></div>
+    <div class="game"><div class="img-slot">Foto: Póker</div><span class="num">03</span><h3>Póker</h3><p>Lee a tus rivales, controla tu juego y sube la apuesta.</p></div>
+    <div class="game"><div class="img-slot">Foto: Tragamonedas</div><span class="num">04</span><h3>Tragamonedas</h3><p>Acción rápida y emocionante con grandes premios.</p></div>
+    <div class="game"><div class="img-slot">Foto: Baccarat</div><span class="num">05</span><h3>Baccarat</h3><p>El juego de los conocedores, para quienes buscan lo exclusivo.</p></div>
+  </div>
+</section>
+
+<section id="galeria">
+  <span class="eyebrow">Galería</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;">Dentro de Black Mustang</h2>
+  <div class="divider"></div>
+  <div class="gallery-grid">
+    <div class="img-slot">Foto 1: Salón principal</div>
+    <div class="img-slot">Foto 2: Mesas de juego</div>
+    <div class="img-slot">Foto 3: Área de tragamonedas</div>
+    <div class="img-slot">Foto 4: Ambiente nocturno</div>
+    <div class="img-slot">Foto 5: Detalle o barra</div>
+    <div class="img-slot">Foto 6: Entrada</div>
+  </div>
+</section>
+
+<section id="equipo">
+  <span class="eyebrow">Equipo</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;">Las personas detrás</h2>
+  <div class="divider"></div>
+  <div class="team-grid">
+    <div class="member"><div class="avatar">1</div><h3>Nombre Apellido</h3><p>Cargo</p></div>
+    <div class="member"><div class="avatar">2</div><h3>Nombre Apellido</h3><p>Cargo</p></div>
+    <div class="member"><div class="avatar">3</div><h3>Nombre Apellido</h3><p>Cargo</p></div>
+    <div class="member"><div class="avatar">4</div><h3>Nombre Apellido</h3><p>Cargo</p></div>
+    <div class="member"><div class="avatar">5</div><h3>Nombre Apellido</h3><p>Cargo</p></div>
+  </div>
+</section>
+
+<section id="redes" style="text-align:center;">
+  <span class="eyebrow">Síguenos</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;">Redes sociales</h2>
+  <div class="social">
+    <a href="https://www.tiktok.com/@TU_USUARIO" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.instagram.com/TU_USUARIO" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</section>
+
+<section id="contacto" class="contact-box">
+  <span class="eyebrow">Contacto</span>
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;">Hablemos</h2>
+  <div class="divider" style="margin-left:auto;margin-right:auto;"></div>
+  <a href="tel:+57000000000" class="phone">+57 000 000 0000</a>
+  <div class="social">
+    <a href="https://wa.me/57000000000" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div><span class="age">+18</span></div>
+  <p>© 2026 Black Mustang. Todos los derechos reservados.</p>
+  <p style="margin-top:.5rem;">Juega con responsabilidad. Prohibida la entrada a menores de edad.</p>
+</footer>
+
+</body>
+</html>
